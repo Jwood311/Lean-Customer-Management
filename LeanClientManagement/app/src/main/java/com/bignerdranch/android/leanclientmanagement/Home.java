@@ -24,14 +24,24 @@ public class Home extends FragmentActivity{
             }
 
             LoggedInFragment loggedFragment = new LoggedInFragment();
+            CusotmerOptionFragment customerOptionFragment = new CusotmerOptionFragment();
+            SessionOptionFragment sessionOptionFragment = new SessionOptionFragment();
 
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
+
             loggedFragment.setArguments(getIntent().getExtras());
 
-            // Add the fragment to the 'fragment_container' FrameLayout
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, loggedFragment).commit();
+
+            customerOptionFragment.setArguments(getIntent().getExtras());
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.customer_container, customerOptionFragment).commit();
+
+            sessionOptionFragment.setArguments(getIntent().getExtras());
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.session_container, sessionOptionFragment).commit();
         }
 
 
