@@ -21,12 +21,24 @@
                   android:label="Home">
 
         </activity>
-        <activity android:name=".LoginActivity"
+        <activity android:name=".ViewSessionActivity"
                   android:label="View Session">
 
         </activity>
+        <activity android:name=".NewCustomerActivity"
+                  android:label="New Customer">
+
+        </activity>
+        <activity android:name=".ConfirmPaymentActivity"
+                  android:label="Confirm Payment">
+
+        </activity>
+        <activity android:name=".ReciptActivity"
+                  android:label="Recipt">
+
+        </activity>
         <activity
-            android:name=".ViewSessionActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
