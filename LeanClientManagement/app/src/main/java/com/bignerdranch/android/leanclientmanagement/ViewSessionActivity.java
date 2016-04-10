@@ -12,5 +12,20 @@ public class ViewSessionActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session);
 
+        if (findViewById(R.id.fragment_container) != null) {
+
+            if (savedInstanceState != null) {
+                return;
+            }
+
+            LoggedInFragment loggedFragment = new LoggedInFragment();
+
+            loggedFragment.setArguments(getIntent().getExtras());
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, loggedFragment).commit();
+
+        }
+
     }
 }

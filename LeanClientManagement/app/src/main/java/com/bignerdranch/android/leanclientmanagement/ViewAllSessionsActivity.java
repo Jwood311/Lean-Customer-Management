@@ -3,9 +3,7 @@ package com.bignerdranch.android.leanclientmanagement;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-
-public class ReciptActivity extends FragmentActivity {
-
+public class ViewAllSessionsActivity extends FragmentActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +23,6 @@ public class ReciptActivity extends FragmentActivity {
                     .add(R.id.fragment_container, loggedFragment).commit();
 
         }
+
     }
 }

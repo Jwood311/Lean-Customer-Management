@@ -37,6 +37,10 @@
                   android:label="Recipt">
 
         </activity>
+        <activity android:name=".ViewAllSessionsActivity"
+                  android:label="View All Sessions">
+
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
