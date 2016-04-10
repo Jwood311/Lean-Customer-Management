@@ -85,7 +85,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Billing Info: "
-            android:id="@+id/textView17"/>
+            android:id="@+id/textView17"
+            android:layout_marginLeft="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -105,7 +106,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Amount: "
-            android:id="@+id/textView19"/>
+            android:id="@+id/textView19"
+            android:layout_marginLeft="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
