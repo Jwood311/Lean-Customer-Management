@@ -42,6 +42,14 @@
                   android:label="View All Sessions">
 
         </activity>
+        <activity android:name=".ViewAllCustomersActivity"
+                  android:label="View All Customers">
+
+        </activity>
+        <activity android:name=".NewSessionActivity"
+                  android:label="New Session">
+
+        </activity>
         <activity
             android:name=".Home"
             android:label="@string/title_activity_login"

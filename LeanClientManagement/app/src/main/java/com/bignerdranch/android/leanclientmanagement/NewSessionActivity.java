@@ -7,7 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class ViewAllSessionsActivity extends FragmentActivity{
+/**
+ * Created by Josh on 4/17/2016.
+ */
+public class NewSessionActivity extends FragmentActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,4 +53,5 @@ public class ViewAllSessionsActivity extends FragmentActivity{
                 return super.onOptionsItemSelected(item);
         }
     }
-}
+
+    }

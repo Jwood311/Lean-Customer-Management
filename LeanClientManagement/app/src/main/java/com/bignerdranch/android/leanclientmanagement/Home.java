@@ -12,11 +12,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
-public class Home extends FragmentActivity{
+public class Home extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,6 @@ public class Home extends FragmentActivity{
         }
 
 
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -73,6 +74,26 @@ public class Home extends FragmentActivity{
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void openNewCustomer(View view) {
+        Intent intent = new Intent(this, NewCustomerActivity.class);
+        startActivity(intent);
+    }
+
+    public void openViewCustomers(View view) {
+        Intent intent = new Intent(this, ViewAllCustomersActivity.class);
+        startActivity(intent);
+    }
+
+    public void openNewSession(View view){
+        Intent intent = new Intent(this, NewSessionActivity.class);
+        startActivity(intent);
+    }
+
+    public void openViewSessions(View view) {
+        Intent intent = new Intent(this, ViewAllSessionsActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -18,33 +18,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                     android:id="@+id/fragment_container"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
-
-        </FrameLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New"
             android:id="@+id/button"
-            android:layout_marginLeft="4dp"/>
+            android:layout_marginLeft="4dp"
+            android:onClick="openNewSession"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:id="@+id/button2"
-            android:layout_marginLeft="4dp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="View"
             android:id="@+id/button3"
-            android:layout_marginLeft="4dp"/>
+            android:layout_marginLeft="4dp"
+            android:onClick="openViewSessions"/>
     </LinearLayout>
 
 </LinearLayout>
