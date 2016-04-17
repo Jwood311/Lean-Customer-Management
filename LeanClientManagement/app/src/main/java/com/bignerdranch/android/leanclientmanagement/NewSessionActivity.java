@@ -15,7 +15,7 @@ public class NewSessionActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_view_all_sessions);
+        setContentView(R.layout.activity_new_session);
 
         if (findViewById(R.id.fragment_container) != null) {
 
