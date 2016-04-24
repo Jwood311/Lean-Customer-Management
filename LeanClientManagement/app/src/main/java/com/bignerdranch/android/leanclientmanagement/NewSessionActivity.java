@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 /**
@@ -52,6 +53,20 @@ public class NewSessionActivity extends FragmentActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void createSession(View view){
+        Toast toast = Toast.makeText(getBaseContext() , "Session Created", Toast.LENGTH_SHORT);
+        toast.show();
+        Intent intent = new Intent(this, ViewAllSessionsActivity.class);
+        startActivity(intent);
+    }
+
+    public void cancelSession(View view){
+        Toast toast = Toast.makeText(getBaseContext() , "Session Cancelled", Toast.LENGTH_SHORT);
+        toast.show();
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
     }
 
     }
