@@ -8,12 +8,10 @@
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content">
 
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"/>
     </FrameLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Relies entirely on functionality not yet implemented"
-        android:id="@+id/textView23"/>
 
 </LinearLayout>

@@ -23,7 +23,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/addName"
         android:layout_gravity="center_horizontal"
         android:autoText="false"
         android:text="Add A Name"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPostalAddress"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/addAddress"
         android:layout_gravity="center_horizontal"
         android:text="Add An Address"
         android:textAlignment="center"/>
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/addPhone"
         android:layout_gravity="center_horizontal"
         android:text="Add A Phone Number"
         android:textAlignment="center"/>
@@ -52,8 +52,32 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
+        android:id="@+id/addBilling"
         android:layout_gravity="center_horizontal"
         android:text="Add Billing Info"
         android:textAlignment="center"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:id="@+id/createClient"
+            android:layout_marginRight="15dp"
+            android:onClick="createClientClient"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:id="@+id/cancelClient"
+            android:layout_marginLeft="15dp"
+            android:onClick="cancelClientClient"/>
+    </LinearLayout>
+
 </LinearLayout>

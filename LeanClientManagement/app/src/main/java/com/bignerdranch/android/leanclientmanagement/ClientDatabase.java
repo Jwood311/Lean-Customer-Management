@@ -19,11 +19,13 @@ public class ClientDatabase {
     //The name and column index of each column in your database.
     //These should be descriptive.
     public static final String KEY_CLIENT_NAME_COLUMN =
-            "GOLD_CLIENT_NAME_COLUMN";
+            "CLIENT_NAME_COLUMN";
     public static final String KEY_CLIENT_ADDRESS_COLUMN =
-            "OLD_HOARD_ACCESSIBLE_COLUMN";
+            "CLIENT_ADDRESS_COLUMN";
     public static final String KEY_CLIENT_PHONE_COLUMN =
-            "GOLD_HOARDED_COLUMN";
+            "KEY_CLIENT_PHONE_COLUMN";
+    public static final String KEY_CLIENT_BILLING_COLUMN =
+            "KEY_CLIENT_BILLING_COLUMN";
     //TODO: Create public field for each column in your table.
     /***/
 
@@ -48,7 +50,7 @@ public class ClientDatabase {
         // Specify the result column projection. Return the minimum set
         // of columns required to satisfy your requirements.
         String[] result_columns = new String[] {
-                KEY_ID, KEY_CLIENT_NAME_COLUMN,KEY_CLIENT_ADDRESS_COLUMN, KEY_CLIENT_PHONE_COLUMN };
+                KEY_ID, KEY_CLIENT_NAME_COLUMN,KEY_CLIENT_ADDRESS_COLUMN, KEY_CLIENT_PHONE_COLUMN, KEY_CLIENT_BILLING_COLUMN };
 
         // Specify the where clause that will limit our results.
         String where = 1 + "=" + 1;
@@ -100,7 +102,7 @@ public class ClientDatabase {
         return averageHoard;
     }
 
-    public void addNewClient(String clientName, String clientAddress, String clientPhone) {
+    public void addNewClient(String clientName, String clientAddress, String clientPhone, String clientBilling) {
         /**
          * Listing 8-5: Inserting new rows into a database
          */
@@ -111,6 +113,7 @@ public class ClientDatabase {
         newValues.put(KEY_CLIENT_NAME_COLUMN, clientName);
         newValues.put(KEY_CLIENT_ADDRESS_COLUMN, clientAddress);
         newValues.put(KEY_CLIENT_PHONE_COLUMN, clientPhone);
+        newValues.put(KEY_CLIENT_BILLING_COLUMN, clientBilling);
         // [ ... Repeat for each column / value pair ... ]
 
         // Insert the row into your table
@@ -118,7 +121,7 @@ public class ClientDatabase {
         db.insert(HoardDBOpenHelper.CLIENTS_DATABASE_TABLE, null, newValues);
     }
 
-    public void updateClientAddress(int hoardId, String newClientAddress) {
+    public void updateClientAddress(String id, String columnName, String updatedInfo) {
         /**
          * Listing 8-6: Updating a database row
          */
@@ -126,12 +129,12 @@ public class ClientDatabase {
         ContentValues updatedValues = new ContentValues();
 
         // Assign values for each row.
-        updatedValues.put(KEY_CLIENT_ADDRESS_COLUMN, newClientAddress);
+        updatedValues.put(columnName,updatedInfo);
         // [ ... Repeat for each column to update ... ]
 
         // Specify a where clause the defines which rows should be
         // updated. Specify where arguments as necessary.
-        String where = KEY_ID + "=" + hoardId;
+        String where = KEY_ID + "=" + id;
         String whereArgs[] = null;
 
         // Update the row with the specified index with the new values.
@@ -168,8 +171,9 @@ public class ClientDatabase {
                 CLIENTS_DATABASE_TABLE + " (" + KEY_ID +
                 " integer primary key autoincrement, " +
                 KEY_CLIENT_NAME_COLUMN + " text not null, " +
-                KEY_CLIENT_ADDRESS_COLUMN + " float, " +
-                KEY_CLIENT_PHONE_COLUMN + " integer);";
+                KEY_CLIENT_ADDRESS_COLUMN + " text not null, " +
+                KEY_CLIENT_PHONE_COLUMN + " text not null, " +
+                KEY_CLIENT_BILLING_COLUMN + " text not null);";
 
         public HoardDBOpenHelper(Context context, String name,
                                  CursorFactory factory, int version) {
