@@ -71,8 +71,34 @@ public class NewCustomerActivity extends FragmentActivity {
     }
 
     public void createClient(View view){
-        db = new ClientDatabase(getBaseContext());
-        db.addNewClient(newClientName.getText().toString(), newClientAddress.getText().toString(), newClientPhone.getText().toString(), newClientBilling.getText().toString());
+           int flag = 0;
+           String errorMessage = "";
+
+            if (newClientName.getText().toString() == "Add A Name"){flag = 1;};
+            if (newClientAddress.getText().toString() == ""){flag = 2;};
+            if (newClientPhone.getText().toString() == ""){flag = 3;};
+            if (newClientBilling.getText().toString() == ""){flag = 4;};
+
+            if (flag == 0) {
+                ClientDatabase db = new ClientDatabase(getBaseContext());
+                db.addNewClient(newClientName.getText().toString(), newClientAddress.getText().toString(), newClientPhone.getText().toString(), newClientBilling.getText().toString());
+                Toast toast = Toast.makeText(getBaseContext(), "Client Created", Toast.LENGTH_SHORT);
+                toast.show();
+                Intent intent = new Intent(this, Home.class);
+                startActivity(intent);
+            } else {
+                switch (flag) {
+                    case 1: errorMessage = "Please add a name";
+                    case 2: errorMessage = "Please add an address";
+                    case 3: errorMessage = "Please add a phone number";
+                    case 4: errorMessage = "Please add billing info";
+                        default: errorMessage = "Please check all fields and try again.";
+
+                }
+                Toast toast = Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT);
+                toast.show();
+
+            }
 
     }
 

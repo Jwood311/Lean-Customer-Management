@@ -186,7 +186,6 @@ public class ClientDatabase {
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DATABASE_CREATE);
         }
-
         // Called when there is a database version mismatch meaning that
         // the version of the database on disk needs to be upgraded to
         // the current version.
