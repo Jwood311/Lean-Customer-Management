@@ -1,7 +1,10 @@
 package com.bignerdranch.android.leanclientmanagement;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -9,9 +12,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class ViewAllCustomersActivity extends FragmentActivity{
+    ClientDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        db = new ClientDatabase(getBaseContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all_customers);
 
@@ -29,12 +34,18 @@ public class ViewAllCustomersActivity extends FragmentActivity{
                     .add(R.id.fragment_container, loggedFragment).commit();
 
         }
+        Cursor cursor = db.getAccessibleHoard();
+        cursor.moveToFirst();
+        long itemId = cursor.getLong(
+                cursor.getColumnIndex(ClientDatabase.KEY_CLIENT_NAME_COLUMN)
+        );
 
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+
     }
 
     @Override

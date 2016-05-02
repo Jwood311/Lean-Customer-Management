@@ -43,7 +43,7 @@ public class ClientDatabase {
         hoardDBOpenHelper.close();
     }
 
-    private Cursor getAccessibleHoard() {
+    public Cursor getAccessibleHoard() {
         /**
          * Listing 8-3: Querying a database
          */
@@ -120,6 +120,7 @@ public class ClientDatabase {
         SQLiteDatabase db = hoardDBOpenHelper.getWritableDatabase();
         db.insert(HoardDBOpenHelper.CLIENTS_DATABASE_TABLE, null, newValues);
     }
+
 
     public void updateClientAddress(String id, String columnName, String updatedInfo) {
         /**
