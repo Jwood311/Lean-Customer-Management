@@ -3,12 +3,15 @@ package com.bignerdranch.android.leanclientmanagement;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
@@ -20,6 +23,7 @@ public class NewCustomerActivity extends FragmentActivity {
     EditText newClientAddress;
     EditText newClientPhone;
     EditText newClientBilling;
+    ImageView addClientImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class NewCustomerActivity extends FragmentActivity {
         newClientAddress = (EditText)findViewById(R.id.addAddress);
         newClientPhone = (EditText)findViewById(R.id.addPhone);
         newClientBilling = (EditText)findViewById(R.id.addBilling);
+        addClientImage = (ImageView)findViewById(R.id.addClientImage);
 
 
     }
@@ -74,10 +79,10 @@ public class NewCustomerActivity extends FragmentActivity {
            int flag = 0;
            String errorMessage = "";
 
-            if (newClientName.getText().toString() == "Add A Name"){flag = 1;};
-            if (newClientAddress.getText().toString() == ""){flag = 2;};
-            if (newClientPhone.getText().toString() == ""){flag = 3;};
-            if (newClientBilling.getText().toString() == ""){flag = 4;};
+            if (newClientName.getText().toString().equals("Add A Name")){flag = 1;};
+            if (newClientAddress.getText().toString().equals("Add An Address")){flag = 2;};
+            if (newClientPhone.getText().toString().equals("Add A Phone Number")){flag = 3;};
+            if (newClientBilling.getText().toString().equals("Add Billing Info")){flag = 4;};
 
             if (flag == 0) {
                 ClientDatabase db = new ClientDatabase(getBaseContext());
@@ -102,8 +107,27 @@ public class NewCustomerActivity extends FragmentActivity {
 
     }
 
+
+    final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public void addClientImage(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            addClientImage.setImageBitmap(imageBitmap);
+        }
+    }
+
     public void cancelClient(View view){
-        Toast toast = Toast.makeText(getBaseContext() , "Session Cancelled", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getBaseContext() , "Client Cancelled", Toast.LENGTH_SHORT);
         toast.show();
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);

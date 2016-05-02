@@ -158,6 +158,15 @@ public class ClientDatabase {
         db.delete(HoardDBOpenHelper.CLIENTS_DATABASE_TABLE, where, whereArgs);
     }
 
+    public void deleteHoard(String client) {
+        String where = KEY_CLIENT_NAME_COLUMN + "= '" + client + "'";
+        String whereArgs[] = null;
+
+        // Delete the rows that match the where clause.
+        SQLiteDatabase db = hoardDBOpenHelper.getWritableDatabase();
+        db.delete(HoardDBOpenHelper.CLIENTS_DATABASE_TABLE, where, whereArgs);
+    }
+
     /**
      * Listing 8-2: Implementing an SQLite Open Helper
      */

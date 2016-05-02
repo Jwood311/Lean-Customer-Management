@@ -39,15 +39,16 @@ public class ViewAllCustomersActivity extends FragmentActivity{
 
         }
 
-
         populateListView();
+
+
 
     }
     private  void populateListView() {
         Cursor cursor = db.getAccessibleHoard();
 
-        String[] fromFieldNames = new String[]{ClientDatabase.KEY_CLIENT_NAME_COLUMN, ClientDatabase.KEY_CLIENT_ADDRESS_COLUMN};
-        int[] toViewIds = new int[]{R.id.textViewClientName, R.id.textViewClientAddress};
+        String[] fromFieldNames = new String[]{ClientDatabase.KEY_CLIENT_NAME_COLUMN, ClientDatabase.KEY_CLIENT_ADDRESS_COLUMN, ClientDatabase.KEY_CLIENT_PHONE_COLUMN, ClientDatabase.KEY_CLIENT_BILLING_COLUMN};
+        int[] toViewIds = new int[]{R.id.textViewClientName, R.id.textViewClientAddress, R.id.textViewClientPhone, R.id.textViewClientBilling};
         SimpleCursorAdapter myCursorAdapter;
         myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.clientlist, cursor, fromFieldNames, toViewIds, 0);
         ListView mylist = (ListView) findViewById(R.id.listViewClients);

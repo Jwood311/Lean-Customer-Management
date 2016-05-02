@@ -15,10 +15,12 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView3"
+        android:id="@+id/addClientImage"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/profile"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:onClick="addClientImage"/>
 
     <EditText
         android:layout_width="match_parent"
