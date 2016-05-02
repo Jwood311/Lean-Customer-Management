@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class ViewAllCustomersActivity extends FragmentActivity{
     ClientDatabase db;
@@ -34,13 +38,29 @@ public class ViewAllCustomersActivity extends FragmentActivity{
                     .add(R.id.fragment_container, loggedFragment).commit();
 
         }
-        Cursor cursor = db.getAccessibleHoard();
-        cursor.moveToFirst();
-        long itemId = cursor.getLong(
-                cursor.getColumnIndex(ClientDatabase.KEY_CLIENT_NAME_COLUMN)
-        );
+
+
+        populateListView();
 
     }
+    private  void populateListView() {
+        Cursor cursor = db.getAccessibleHoard();
+
+        String[] fromFieldNames = new String[]{ClientDatabase.KEY_CLIENT_NAME_COLUMN, ClientDatabase.KEY_CLIENT_ADDRESS_COLUMN};
+        int[] toViewIds = new int[]{R.id.textViewClientName, R.id.textViewClientAddress};
+        SimpleCursorAdapter myCursorAdapter;
+        myCursorAdapter = new SimpleCursorAdapter(getBaseContext(), R.layout.clientlist, cursor, fromFieldNames, toViewIds, 0);
+        ListView mylist = (ListView) findViewById(R.id.listViewClients);
+        mylist.setAdapter(myCursorAdapter);
+
+
+
+       /* cursor.moveToFirst();
+        long itemId = cursor.getLong(
+                cursor.getColumnIndex(ClientDatabase.KEY_CLIENT_NAME_COLUMN)
+        );*/
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
